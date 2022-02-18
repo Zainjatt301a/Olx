@@ -5,7 +5,7 @@ export default function Card(props) {
 
 
 
-        <div className="w-[50%] ml-10 mt-10">
+        <div className="w-[50%] ml-10 mt-10 cursor-pointer">
 
             <div className="group relative">
                 <div className="w-full ">
@@ -18,17 +18,17 @@ export default function Card(props) {
                 <div className="mt-4 flex justify-between">
                     <div>
                         <h3 className="text-sm text-gray-700">
-                            <a href="https://images.unsplash.com/">
-                                <span aria-hidden="true" className="absolute inset-0" />
-                                {props.title}
 
-                            </a>
+                            <span aria-hidden="true" className="absolute inset-0" />
+                            {props.title}
+
+
                         </h3>
                         <h3 className="text-sm text-gray-700">
-                            <a href="https://images.unsplash.com/">
-                                <span aria-hidden="true" className="absolute inset-0" />
-                                Category: {props.category}
-                            </a>
+
+                            <span aria-hidden="true" className="absolute inset-0" />
+                            Category: {props.category}
+
                         </h3>
 
                     </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../../Components/Card"
 import { collection, getDocs, getFirestore } from "firebase/firestore";
-const Home = () => {
+const Home = (props) => {
     const [allData, setAllData] = useState([])
     const [index, setIndex] = useState()
     // let temp = [...allData]
@@ -37,10 +37,13 @@ const Home = () => {
                         className=" h-12 "
                         src="https://upload.wikimedia.org/wikipedia/commons/4/42/OLX_New_Logo.png"
                         alt="Workflow"
+                        onClick={() => props.onClick("Sell")}
                     />
                 </div>
                 <div className="bg-blue-600 text-white w-[5%] flex justify-center h-10 rounded">
-                    <button>
+                    <button
+                        onClick={() => props.onClick("Sell")}
+                    >
                         Sell it
                     </button>
                 </div>
@@ -50,7 +53,7 @@ const Home = () => {
                 {
                     allData.map((items, index) => {
                         return (
-                            <div key={index}>
+                            <div onClick={() => props.onClick("Productdetail")} key={index}>
                                 < Card title={items.title} img="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
                                     price={items.price}
                                     description={items.description}

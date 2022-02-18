@@ -1,7 +1,7 @@
 import { sellData } from "../../Config/firebase"
 import { useState } from "react"
 
-export default function Sell() {
+export default function Sell(props) {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [category, setCategory] = useState({})
@@ -16,114 +16,134 @@ export default function Sell() {
     }
 
     return (
-        <div className="mt-10 sm:mt-0">
-            <div className="md:grid md:grid-cols-3 md:gap-6">
-
-                <div className="mt-5 md:mt-0 md:col-span-2">
-
-                    <div className="shadow overflow-hidden sm:rounded-md">
-                        <div className="px-4 py-5 bg-white sm:p-6">
-                            <div className="grid grid-cols-6 gap-6">
-                                <div className="col-span-6 sm:col-span-3">
-                                    <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
-                                        Product Name
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="first-name"
-                                        id="first-name"
-                                        autoComplete="given-name"
-                                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-700 border-2 rounded-md"
-                                        value={title}
-                                        onChange={(e) => setTitle(e.target.value)}
-                                    />
-                                </div>
-
-
-
-                                <div className="col-span-6 sm:col-span-4">
-                                    <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
-                                        Description
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="email-address"
-                                        id="email-address"
-                                        autoComplete="email"
-                                        className="mt-1 h-10 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-700 border-2 rounded-md"
-                                        value={description}
-                                        onChange={(e) => setDescription(e.target.value)}
-                                    />
-                                </div>
-
-                                <div className="col-span-6 sm:col-span-3">
-                                    <label htmlFor="country" className="block text-sm font-medium text-gray-700">
-                                        Category
-                                    </label>
-                                    <select
-                                        id="country"
-                                        name="country"
-                                        autoComplete="country-name"
-                                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                        value={category}
-                                        onChange={(e) => setCategory(e.target.value)}
-                                    >
-                                        <option>Tablets</option>
-                                        <option>Mobile Phones</option>
-                                        <option>Laptops</option>
-                                    </select>
-                                </div>
-
-                                <div className="col-span-6">
-                                    <label htmlFor="street-address" className="block text-sm font-medium text-gray-700">
-                                        Price
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="street-address"
-                                        id="street-address"
-                                        autoComplete="street-address"
-                                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-[20%] shadow-sm sm:text-sm border-gray-700 border-2 rounded-md"
-                                        value={price}
-                                        onChange={(e) => setPrice(e.target.value)}
-                                    />
-                                </div>
-
-
-
-
-
-                                <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                                    <label htmlFor="postal-code" className="block text-sm font-medium text-gray-700">
-                                        Choose Images
-                                    </label>
-                                    <input
-                                        type="file"
-                                        name="postal-code"
-                                        id="postal-code"
-                                        autoComplete="postal-code"
-                                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                            <button
-                                type="submit"
-                                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                onClick={submitSell}
-                            >
-                                Sell
-                            </button>
-                        </div>
-                    </div>
-
+        <>
+            <div className="flex justify-between pr-5 items-center">
+                <div>
+                    <img
+                        className=" h-12 cursor-pointer "
+                        src="https://upload.wikimedia.org/wikipedia/commons/4/42/OLX_New_Logo.png"
+                        alt="Workflow"
+                        onClick={() => props.onClick("Home")}
+                    />
+                </div>
+                <div className="bg-blue-600 text-white w-[5%] flex justify-center h-10 rounded">
+                    <button
+                        onClick={() => props.onClick("Sell")}
+                    >
+                        Sell it
+                    </button>
                 </div>
             </div>
-        </div >
+
+
+            <div className="mt-10 sm:mt-0">
+                <div className="md:grid md:grid-cols-3 md:gap-6">
+
+                    <div className="mt-5 md:mt-0 md:col-span-2">
+
+                        <div className="shadow overflow-hidden sm:rounded-md">
+                            <div className="px-4 py-5 bg-white sm:p-6">
+                                <div className="grid grid-cols-6 gap-6">
+                                    <div className="col-span-6 sm:col-span-3">
+                                        <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
+                                            Product Name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="first-name"
+                                            id="first-name"
+                                            autoComplete="given-name"
+                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-700 border-2 rounded-md"
+                                            value={title}
+                                            onChange={(e) => setTitle(e.target.value)}
+                                        />
+                                    </div>
 
 
 
+                                    <div className="col-span-6 sm:col-span-4">
+                                        <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
+                                            Description
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="email-address"
+                                            id="email-address"
+                                            autoComplete="email"
+                                            className="mt-1 h-10 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-700 border-2 rounded-md"
+                                            value={description}
+                                            onChange={(e) => setDescription(e.target.value)}
+                                        />
+                                    </div>
+
+                                    <div className="col-span-6 sm:col-span-3">
+                                        <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                                            Category
+                                        </label>
+                                        <select
+                                            id="country"
+                                            name="country"
+                                            autoComplete="country-name"
+                                            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                            value={category}
+                                            onChange={(e) => setCategory(e.target.value)}
+                                        >
+                                            <option>Tablets</option>
+                                            <option>Mobile Phones</option>
+                                            <option>Laptops</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="col-span-6">
+                                        <label htmlFor="street-address" className="block text-sm font-medium text-gray-700">
+                                            Price
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="street-address"
+                                            id="street-address"
+                                            autoComplete="street-address"
+                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-[20%] shadow-sm sm:text-sm border-gray-700 border-2 rounded-md"
+                                            value={price}
+                                            onChange={(e) => setPrice(e.target.value)}
+                                        />
+                                    </div>
+
+
+
+
+
+                                    <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                                        <label htmlFor="postal-code" className="block text-sm font-medium text-gray-700">
+                                            Choose Images
+                                        </label>
+                                        <input
+                                            type="file"
+                                            name="postal-code"
+                                            id="postal-code"
+                                            autoComplete="postal-code"
+                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                                <button
+                                    type="submit"
+                                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    onClick={submitSell}
+                                >
+                                    Sell
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div >
+
+
+        </>
 
 
 

@@ -1,4 +1,5 @@
 import Card from "./Components/Card";
+import Route from "./Components/Routes";
 import Home from "./Views/Home";
 import Productdetail from "./Views/Productdetail";
 import Sell from "./Views/Sell";
@@ -12,7 +13,7 @@ function App() {
       {/* <Signin /> */}
       {/* <Signup /> */}
       {/* <Card /> */}
-      <Home />
+      <Route />
       {/* <Sell /> */}
       {/* <Productdetail /> */}
     </div>
