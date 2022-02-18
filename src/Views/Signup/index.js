@@ -2,7 +2,7 @@
 import { useState } from "react"
 import { register } from "../../Config/firebase"
 
-export default function Signup() {
+export default function Signup(props) {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -76,7 +76,9 @@ export default function Signup() {
                     </div>
                 </div>
 
-
+                <div id="footer">
+                    <p>Already have an account ?<button onClick={() => props.onClick("Signin")} > Login</button></p>
+                </div>
 
                 <div>
                     <button

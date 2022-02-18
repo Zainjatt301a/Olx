@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../../Components/Card"
 import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { signOut, getAuth } from "firebase/auth";
 const Home = (props) => {
     const [allData, setAllData] = useState([])
     const [index, setIndex] = useState()
@@ -29,6 +30,16 @@ const Home = (props) => {
         setAllData(temp)
     }
     console.log(allData, "State DATA");
+    const Logout = () => {
+        const auth = getAuth();
+        signOut(auth).then(() => {
+            // Sign-out successful.
+            alert("Sign-out successful.")
+
+        }).catch((error) => {
+            // An error happened.
+        });
+    }
     return (
         <div className="w-full">
             <div className="flex justify-between pr-5 items-center">
@@ -47,13 +58,21 @@ const Home = (props) => {
                         Sell it
                     </button>
                 </div>
+                <div className="bg-blue-600 text-white w-[7%] flex justify-center h-10 rounded">
+                    <button
+                        onClick={Logout}
+                    >
+                        Sign Out
+                    </button>
+                </div>
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col ">
+                <h1 className="text-center text-2xl mt-5 ">All Products</h1>
                 {
                     allData.map((items, index) => {
                         return (
-                            <div onClick={() => props.onClick("Productdetail")} key={index}>
+                            <div className="flex justify-center" onClick={() => props.onClick("Productdetail")} key={index}>
                                 < Card title={items.title} img="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
                                     price={items.price}
                                     description={items.description}

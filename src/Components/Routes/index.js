@@ -10,7 +10,7 @@ function Route(props) {
 
         setPage(page)
     }
-    console.log(props, "Propssss");
+    // console.log(props,"Propssss");
     return (
         <div>
             {page === "Home" && <Home onClick={changePage} />}
