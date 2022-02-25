@@ -1,8 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, setDoc, doc, getDocs } from "firebase/firestore"
+import { getFirestore, collection, addDoc, setDoc, doc, getDocs, getDoc } from "firebase/firestore"
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
+
 // import { useState } from "react";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -23,7 +25,9 @@ const auth = getAuth();
 const db = getFirestore();
 
 
+
 const register = (email, password, name, uid) => {
+
     createUserWithEmailAndPassword(auth, email, password)
 
         .then((userCredential) => {
@@ -65,10 +69,12 @@ const register = (email, password, name, uid) => {
 const login = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
+
             // Signed in 
             const user = userCredential.user;
             // ...
             alert("Successfully Logged In")
+
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -101,11 +107,46 @@ const sellData = (title, description, category, price, id) => {
     // })
 }
 
+const GetAdd = async () => {
+
+    const data = await getDocs(collection(db, "Products"));
+    const ads = []
+    data.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        ads.push({ ...doc.data(), id: doc.id })
+
+    })
+    return ads
+}
+
+const getAddDetails = async (paramState) => {
+    const docRef = doc(db, "Products", paramState);
+    const docSnap = await getDoc(docRef);
+
+
+
+    if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+
+
+
+    return docSnap.data()
+
+
+}
 
 
 
 export {
     register,
     login,
-    sellData
+    sellData,
+    GetAdd,
+    getAddDetails
+
 }

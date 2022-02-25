@@ -1,14 +1,18 @@
 // import { LockClosedIcon } from '@heroicons/react/solid'
 import { useState } from "react"
 import { login } from "../../Config/firebase"
+import { useNavigate } from "react-router-dom"
 
 
 export default function Signin(props) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const navigate = useNavigate()
+
     const Signin = () => {
         login(email, password)
+        navigate('/home')
         // console.log(email, password);
     }
 
@@ -83,7 +87,7 @@ export default function Signin(props) {
                     </div>
                 </div>
                 <div id="footer">
-                    <p>Don't have an account ?<button onClick={() => props.onClick("Signup")} > Sign Up</button></p>
+                    <p>Don't have an account ?<button onClick={() => navigate("/")} > Sign Up</button></p>
                 </div>
                 <div>
                     <button

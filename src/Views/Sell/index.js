@@ -1,5 +1,6 @@
 import { sellData } from "../../Config/firebase"
 import { useState } from "react"
+import Header from "../../Components/Header"
 
 export default function Sell(props) {
     const [title, setTitle] = useState("")
@@ -15,25 +16,11 @@ export default function Sell(props) {
         setPrice("")
     }
 
+
+
     return (
         <>
-            <div className="flex justify-between pr-5 items-center">
-                <div>
-                    <img
-                        className=" h-12 cursor-pointer "
-                        src="https://upload.wikimedia.org/wikipedia/commons/4/42/OLX_New_Logo.png"
-                        alt="Workflow"
-                        onClick={() => props.onClick("Home")}
-                    />
-                </div>
-                <div className="bg-blue-600 text-white w-[5%] flex justify-center h-10 rounded">
-                    <button
-                        onClick={() => props.onClick("Sell")}
-                    >
-                        Sell it
-                    </button>
-                </div>
-            </div>
+            <Header />
 
 
             <div className="mt-10 sm:mt-0">

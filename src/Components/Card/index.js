@@ -5,7 +5,7 @@ export default function Card(props) {
 
 
 
-        <div className="w-[50%] ml-10 mt-10 cursor-pointer">
+        <div className="w-[50%] ml-10 mt-10 cursor-pointer " onClick={props.onClick}>
 
             <div className="group relative">
                 <div className="w-full ">
